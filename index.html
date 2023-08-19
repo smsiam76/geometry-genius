@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>geometry calculation</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<style type="text/css">
+		.custom-sm::before{
+			content: '';
+		    width: 200px;
+		    height: 4px;
+		    background: #fde68a;
+		    position: absolute;
+		    bottom: -4px;
+		    left: 70px;
+		}
+		.custom-sm::after {
+		    content: '';
+		    width: 40px;
+		    height: 16px;
+		    background: #fcd34d;
+		    position: absolute;
+		    top: 86%;
+		    left: calc(50% + -20px);
+		    border-radius: 8px 0;
+		}
+	</style>
+</head>
+<body class="text-base">
+	<header></header>
+	<main class="container mx-auto mt-5">
+		<div class="flex gap-5 flex-col lg:flex-row justify-center">
+			<div class="grid gap-5 lg:gap-10 grid-cols-1 lg:grid-cols-3">
+				<!-- card 1 -->
+				<div class="p-8">
+					<figure class="mb-3">
+						<img class="w-40 h-32 mx-auto" src="./images/triangle.png" alt="">
+					</figure>
+					<div class="mb-2 text-center">
+						<h3 class="text-2xl font-bold mb-1">Triangle</h3>
+						<p>Area (A) = <span class="font-medium">0.5 X b X h</span></p>
+					</div>
+					<div class="flex gap-5 justify-center mb-3">
+						<div class="flex gap-1">
+							<input id="base-field" class="w-16 outline-0 bg-amber-200 px-2 rounded-lg" type="text" name="" id="" placeholder="b">
+							<p>&nbsp;cm</p>
+						</div>
+						<div class="flex gap-1">
+							<input id="height-field" class="w-16 outline-0 bg-amber-200 px-2 rounded-lg" type="text" name="" id="" placeholder="h">
+							<p>&nbsp;cm</p>
+						</div>
+					</div>
+					<div class="text-center">
+						<h2 class="text-start mb-2 font-medium">Area &nbsp;<span id="triangle-value" class="text-lg">0</span> cm<sup>2</sup></h2>
+						<button onclick="getTriangleCalculation()" class="bg-amber-300 hover:bg-amber-400 font-semibold px-4 py-2 w-1/2 lg:w-full rounded-lg">Calculate</button>
+					</div>
+				</div>
+				<!-- card 2 -->
+				<div class="p-8">
+					<figure class="mb-3">
+						<img class="w-40 h-32 mx-auto" src="./images/rectangle.png" alt="">
+					</figure>
+					<div class="mb-2 text-center">
+						<h3 class="text-2xl font-bold mb-1">Rectangle</h3>
+						<p>Area (A) = <span class="font-medium">w X l</span></p>
+					</div>
+					<div class="flex gap-5 justify-center mb-3">
+						<div class="flex gap-1">
+							<input id="witdh-field" class="w-16 outline-0 bg-amber-200 px-2 rounded-lg" type="text" name="" id="" placeholder="w">
+							<p>&nbsp;cm</p>
+						</div>
+						<div class="flex gap-1">
+							<input id="length-field" class="w-16 outline-0 bg-amber-200 px-2 rounded-lg" type="text" name="" id="" placeholder="l">
+							<p>&nbsp;cm</p>
+						</div>
+					</div>
+					<div class="text-center">
+						<h2 class="text-start mb-2 font-medium">Area &nbsp;<span id="rectangle-value" class="text-lg">0</span> cm<sup>2</sup></h2>
+						<button onclick="getRectangleCalculation()" class="bg-amber-300 hover:bg-amber-400 font-semibold px-4 py-2 w-1/2 lg:w-full rounded-lg">Calculate</button>
+					</div>
+				</div>				
+				<!-- card 3 -->
+				<div class="p-8">
+					<figure class="mb-3">
+						<img class="w-40 h-32 mx-auto" src="./images/parallelogram.png" alt="">
+					</figure>
+					<div class="mb-2 text-center">
+						<h3 class="text-2xl font-bold mb-1">Parallelogram</h3>
+						<p>Area (A) = <span class="font-medium">b X h</span></p>
+					</div>
+					<div class="flex gap-5 justify-center mb-3">
+						<div class="flex gap-1">
+							<input id="b-field" class="w-16 outline-0 bg-amber-200 px-2 rounded-lg" type="text" name="" id="" placeholder="b">
+							<p>&nbsp;cm</p>
+						</div>
+						<div class="flex gap-1">
+							<input id="h-field" class="w-16 outline-0 bg-amber-200 px-2 rounded-lg" type="text" name="" id="" placeholder="h">
+							<p>&nbsp;cm</p>
+						</div>
+					</div>
+					<div class="text-center">
+						<h2 class="text-start mb-2 font-medium">Area &nbsp;<span id="parallelogram-value" class="text-lg">0</span> cm<sup>2</sup></h2>
+						<button onclick="getParallelogramCalculation()" class="bg-amber-300 hover:bg-amber-400 font-semibold px-4 py-2 w-1/2 lg:w-full rounded-lg">Calculate</button>
+					</div>
+				</div>
+				<!-- card 4 -->
+				<div class="p-8">
+					<figure class="mb-3">
+						<img class="w-40 h-32 mx-auto" src="./images/rhombus.png" alt="">
+					</figure>
+					<div class="mb-2 text-center">
+						<h3 class="text-2xl font-bold mb-1">Rhombus</h3>
+						<p>Area (A) = <span class="font-medium">.5 X d<sub>1</sub> X d<sub>2</sub></span></p>
+					</div>
+					<div class="flex gap-5 justify-center mb-3">
+						<div class="flex gap-1">
+							<input id="rd1-field" class="w-16 outline-0 bg-amber-200 px-2 rounded-lg" type="text" name="" id="" placeholder="d1">
+							<p>&nbsp;cm</p>
+						</div>
+						<div class="flex gap-1">
+							<input id="rd2-field" class="w-16 outline-0 bg-amber-200 px-2 rounded-lg" type="text" name="" id="" placeholder="d2">
+							<p>&nbsp;cm</p>
+						</div>
+					</div>
+					<div class="text-center">
+						<h2 class="text-start mb-2 font-medium">Area &nbsp;<span id="rhombus-value" class="text-lg">0</span> cm<sup>2</sup></h2>
+						<button onclick="getRhombusCalculation()" class="bg-amber-300 hover:bg-amber-400 font-semibold px-4 py-2 w-1/2 lg:w-full rounded-lg">Calculate</button>
+					</div>
+				</div>
+				<!-- card 5 -->
+				<div class="p-8">
+					<figure class="mb-3">
+						<img class="w-40 h-32 mx-auto" src="./images/pentagon.png" alt="">
+					</figure>
+					<div class="mb-2 text-center">
+						<h3 class="text-2xl font-bold mb-1">Pentagon</h3>
+						<p>Area (A) = <span class="font-medium">.5 X p X v</span></p>
+					</div>
+					<div class="flex gap-5 justify-center mb-3">
+						<div class="flex gap-1">
+							<input id="pp-field" class="w-16 outline-0 bg-amber-200 px-2 rounded-lg" type="text" name="" id="" placeholder="p">
+							<p>&nbsp;cm</p>
+						</div>
+						<div class="flex gap-1">
+							<input id="pb-field" class="w-16 outline-0 bg-amber-200 px-2 rounded-lg" type="text" name="" id="" placeholder="b">
+							<p>&nbsp;cm</p>
+						</div>
+					</div>
+					<div class="text-center">
+						<h2 class="text-start mb-2 font-medium">Area &nbsp;<span id="pentagon-value" class="text-lg">0</span> cm<sup>2</sup></h2>
+						<button onclick="getPentagonCalculation()" class="bg-amber-300 hover:bg-amber-400 font-semibold px-4 py-2 w-1/2 lg:w-full rounded-lg">Calculate</button>
+					</div>
+				</div>
+				<!-- card 6 -->
+				<div class="p-8">
+					<figure class="mb-3">
+						<img class="w-40 h-32 mx-auto" src="./images/ellipse.png" alt="">
+					</figure>
+					<div class="mb-2 text-center">
+						<h3 class="text-2xl font-bold mb-1">Ellipse</h3>
+						<p>Area (A) = <span class="font-medium">&Pi;ab</span></p>
+					</div>
+					<div class="flex gap-5 justify-center mb-3">
+						<div class="flex gap-1">
+							<input id="ea-field" class="w-16 outline-0 bg-amber-200 px-2 rounded-lg" type="text" name="" id="" placeholder="a">
+							<p>&nbsp;cm</p>
+						</div>
+						<div class="flex gap-1">
+							<input id="eb-field" class="w-16 outline-0 bg-amber-200 px-2 rounded-lg" type="text" name="" id="" placeholder="b">
+							<p>&nbsp;cm</p>
+						</div>
+					</div>
+					<div class="text-center">
+						<h2 class="text-start mb-2 font-medium">Area &nbsp;<span id="ellipse-value" class="text-lg">0</span> cm<sup>2</sup></h2>
+						<button onclick="getEllipseCalculation()" class="bg-amber-300 hover:bg-amber-400 font-semibold px-4 py-2 w-1/2 lg:w-full rounded-lg">Calculate</button>
+					</div>
+				</div>
+			</div>
+			<div class="w-[350px]">
+				<div class="relative mb-6">
+					<h3 class="custom-sm text-center py-2 text-xl font-semibold mx-auto">Area Calculation</h3>
+				</div>
+				<div id="area-calc" class="">
+					
+				</div>
+			</div>
+		</div>
+	</main>
+	<script src="script.js"></script>
+	<script src="utilities.js"></script>
+</body>
+</html>
